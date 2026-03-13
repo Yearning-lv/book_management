@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentms.ui.controller.CirculationPanelController"
+      spacing="16" styleClass="panel-root">
+  <children>
+    <Label text="借阅中心" styleClass="panel-title" />
+    <TabPane>
+      <tabs>
+        <Tab text="借阅生命周期" closable="false">
+          <content>
+            <VBox spacing="14">
+              <children>
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel-toolbar">
+                  <padding>
+                    <Insets top="12" right="14" bottom="12" left="14" />
+                  </padding>
+                  <children>
+                    <TextField fx:id="borrowKeywordField" promptText="按书名/读者/条码搜索" HBox.hgrow="ALWAYS" />
+                    <ComboBox fx:id="borrowStatusBox" prefWidth="130.0" />
+                    <Button text="查询" onAction="#handleBorrowSearch" styleClass="toolbar-action-button" />
+                    <Button text="刷新" onAction="#handleBorrowRefresh" styleClass="toolbar-action-button" />
+                    <Button fx:id="renewButton" text="续借" onAction="#handleRenew" styleClass="toolbar-action-button" />
+                    <Button fx:id="returnButton" text="归还" onAction="#handleReturn" styleClass="toolbar-action-button" />
+                  </children>
+                </HBox>
+
+                <SplitPane dividerPositions="0.6">
+                  <items>
+                    <TableView fx:id="borrowTable">
+                      <columns>
+                        <TableColumn fx:id="borrowTitleColumn" text="书名" prefWidth="180.0" />
+                        <TableColumn fx:id="borrowReaderColumn" text="读者" prefWidth="110.0" />
+                        <TableColumn fx:id="borrowBarcodeColumn" text="条码" prefWidth="120.0" />
+                        <TableColumn fx:id="borrowStatusColumn" text="状态" prefWidth="90.0" />
+                        <TableColumn fx:id="borrowDateColumn" text="借出日期" prefWidth="100.0" />
+                        <TableColumn fx:id="dueDateColumn" text="应还日期" prefWidth="100.0" />
+                        <TableColumn fx:id="fineAmountColumn" text="罚金" prefWidth="90.0" />
+                      </columns>
+                    </TableView>
+
+                    <VBox fx:id="borrowActionPane" spacing="10">
+                      <children>
+                        <Label text="借出登记" styleClass="panel-title" />
+                        <GridPane hgap="10" vgap="10">
+                          <children>
+                            <Label text="读者" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                            <ComboBox fx:id="readerBox" prefWidth="240.0" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                            <Label text="副本" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                            <ComboBox fx:id="copyBox" prefWidth="240.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                            <Label text="借出日期" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                            <DatePicker fx:id="borrowDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                          </children>
+                        </GridPane>
+                        <TextArea fx:id="borrowRemarkArea" prefRowCount="4" promptText="借阅备注" />
+                        <Button fx:id="borrowButton" text="登记借出" onAction="#handleBorrowBook" />
+                      </children>
+                      <padding>
+                        <Insets top="10" right="8" bottom="10" left="8" />
+                      </padding>
+                    </VBox>
+                  </items>
+                </SplitPane>
+              </children>
+            </VBox>
+          </content>
+        </Tab>
+
+        <Tab text="预约队列" closable="false">
+          <content>
+            <VBox spacing="14">
+              <children>
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel-toolbar">
+                  <padding>
+                    <Insets top="12" right="14" bottom="12" left="14" />
+                  </padding>
+                  <children>
+                    <ComboBox fx:id="reservationStatusBox" prefWidth="130.0" />
+                    <Button text="查询" onAction="#handleReserveSearch" styleClass="toolbar-action-button" />
+                    <Button text="刷新" onAction="#handleReserveRefresh" styleClass="toolbar-action-button" />
+                    <Button fx:id="cancelReservationButton" text="取消预约" onAction="#handleCancelReservation" styleClass="toolbar-action-button" />
+                  </children>
+                </HBox>
+                <Label text="说明：这里管理的是图书预约记录。排队序号按同一本书分别计算，不是全系统统一编号，所以不同图书都可能出现“第1位”。“排队中”表示还在等书，“待取书”表示已有副本为该读者保留。" styleClass="learning-helper-text" wrapText="true" />
+
+                <SplitPane dividerPositions="0.62">
+                  <items>
+                    <TableView fx:id="reservationTable">
+                      <columns>
+                        <TableColumn fx:id="reserveTitleColumn" text="书名" prefWidth="190.0" />
+                        <TableColumn fx:id="reserveReaderColumn" text="读者" prefWidth="110.0" />
+                        <TableColumn fx:id="queueColumn" text="本书排位" prefWidth="100.0" />
+                        <TableColumn fx:id="reserveStatusColumn" text="状态" prefWidth="90.0" />
+                        <TableColumn fx:id="reserveDateColumn" text="预约日期" prefWidth="100.0" />
+                        <TableColumn fx:id="pickupDeadlineColumn" text="到馆截止" prefWidth="100.0" />
+                      </columns>
+                    </TableView>
+
+                    <VBox fx:id="reservationActionPane" spacing="10">
+                      <children>
+                        <Label text="发起预约" styleClass="panel-title" />
+                        <VBox fx:id="reservationReaderPane" spacing="6">
+                          <children>
+                            <Label text="预约读者" />
+                            <ComboBox fx:id="reserveReaderBox" prefWidth="260.0" promptText="工作人员请选择读者" />
+                          </children>
+                        </VBox>
+                        <ComboBox fx:id="reserveBookBox" prefWidth="260.0" promptText="选择图书" />
+                        <TextArea fx:id="reserveNoteArea" prefRowCount="5" promptText="预约备注 / 说明" />
+                        <Button fx:id="reserveButton" text="提交预约" onAction="#handleReserveBook" />
+                      </children>
+                      <padding>
+                        <Insets top="10" right="8" bottom="10" left="8" />
+                      </padding>
+                    </VBox>
+                  </items>
+                </SplitPane>
+              </children>
+            </VBox>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</VBox>

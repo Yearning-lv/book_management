@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentms.ui.controller.CopyPanelController"
+      spacing="16" styleClass="panel-root">
+  <children>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel-toolbar">
+      <padding>
+        <Insets top="14" right="16" bottom="14" left="16" />
+      </padding>
+      <children>
+        <Label text="馆藏副本" styleClass="panel-title" />
+        <TextField fx:id="keywordField" promptText="按条码/馆藏位置搜索" HBox.hgrow="ALWAYS" />
+        <ComboBox fx:id="statusFilterBox" prefWidth="130.0" />
+        <Button text="查询" onAction="#handleSearch" styleClass="toolbar-action-button" />
+        <Button text="重置" onAction="#handleResetFilter" styleClass="toolbar-action-button" />
+        <Button text="新增" onAction="#handleNew" styleClass="toolbar-action-button" />
+        <Button text="保存" onAction="#handleSave" styleClass="toolbar-action-button" />
+        <Button text="删除" onAction="#handleDelete" styleClass="toolbar-action-button" />
+      </children>
+    </HBox>
+
+    <SplitPane dividerPositions="0.52">
+      <items>
+        <TableView fx:id="copyTable">
+          <columns>
+            <TableColumn fx:id="barcodeColumn" text="条码" prefWidth="130.0" />
+            <TableColumn fx:id="titleColumn" text="所属图书" prefWidth="190.0" />
+            <TableColumn fx:id="locationColumn" text="馆藏位置" prefWidth="110.0" />
+            <TableColumn fx:id="statusColumn" text="状态" prefWidth="90.0" />
+            <TableColumn fx:id="conditionColumn" text="成色" prefWidth="90.0" />
+          </columns>
+        </TableView>
+
+        <GridPane hgap="10" vgap="10">
+          <children>
+            <Label text="所属图书" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <ComboBox fx:id="bookBox" prefWidth="250.0" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <Label text="副本条码" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextField fx:id="barcodeField" promptText="如 BC20260001" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <Label text="馆藏位置" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextField fx:id="locationField" promptText="一层A区-03架" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <Label text="副本成色" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <ComboBox fx:id="conditionBox" prefWidth="180.0" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+            <Label text="副本状态" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+            <ComboBox fx:id="statusBox" prefWidth="180.0" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+            <Label text="采购日期" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+            <DatePicker fx:id="purchaseDatePicker" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+            <Label text="最近盘点" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+            <DatePicker fx:id="inventoryDatePicker" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+          </children>
+          <padding>
+            <Insets top="12" right="10" bottom="12" left="10" />
+          </padding>
+        </GridPane>
+      </items>
+    </SplitPane>
+  </children>
+</VBox>

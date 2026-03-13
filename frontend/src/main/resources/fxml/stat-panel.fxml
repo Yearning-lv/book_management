@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentms.ui.controller.StatPanelController"
+      spacing="16" styleClass="panel-root stat-dashboard">
+  <children>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel-toolbar">
+      <padding>
+        <Insets top="14" right="16" bottom="14" left="16" />
+      </padding>
+      <children>
+        <Label text="统计分析" styleClass="panel-title" />
+        <Label fx:id="summaryLabel" text="正在加载..." styleClass="stat-summary" HBox.hgrow="ALWAYS" />
+        <Button text="刷新统计" onAction="#handleRefresh" styleClass="toolbar-action-button" />
+      </children>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" styleClass="stat-scroll">
+      <content>
+        <VBox spacing="14">
+          <children>
+            <GridPane hgap="12" vgap="12" styleClass="stat-grid">
+              <children>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                  <children>
+                    <Label text="图书种类" styleClass="metric-label" />
+                    <Label fx:id="bookCountLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                  <children>
+                    <Label text="馆藏副本" styleClass="metric-label" />
+                    <Label fx:id="copyCountLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="0" GridPane.columnIndex="2">
+                  <children>
+                    <Label text="读者规模" styleClass="metric-label" />
+                    <Label fx:id="readerCountLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="0" GridPane.columnIndex="3">
+                  <children>
+                    <Label text="在途借阅" styleClass="metric-label" />
+                    <Label fx:id="activeBorrowLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                  <children>
+                    <Label text="逾期记录" styleClass="metric-label" />
+                    <Label fx:id="overdueLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                  <children>
+                    <Label text="预约队列" styleClass="metric-label" />
+                    <Label fx:id="reservationLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+                <VBox spacing="4" styleClass="stat-card" GridPane.rowIndex="1" GridPane.columnIndex="2">
+                  <children>
+                    <Label text="当前可借" styleClass="metric-label" />
+                    <Label fx:id="availableCopyLabel" text="0" styleClass="metric-value" />
+                  </children>
+                </VBox>
+              </children>
+            </GridPane>
+
+            <BarChart fx:id="categoryChart" title="分类馆藏分布" categoryGap="16" animated="false">
+              <xAxis>
+                <CategoryAxis fx:id="categoryXAxis" label="图书分类" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="数量" />
+              </yAxis>
+            </BarChart>
+
+            <LineChart fx:id="trendChart" title="借阅趋势" animated="false">
+              <xAxis>
+                <CategoryAxis fx:id="trendXAxis" label="月份" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="借阅次数" />
+              </yAxis>
+            </LineChart>
+
+            <BarChart fx:id="topBooksChart" title="热门图书 TOP 5" animated="false">
+              <xAxis>
+                <CategoryAxis fx:id="topBooksXAxis" label="书名" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="借阅次数" />
+              </yAxis>
+            </BarChart>
+          </children>
+          <padding>
+            <Insets top="4" right="4" bottom="4" left="4" />
+          </padding>
+        </VBox>
+      </content>
+    </ScrollPane>
+  </children>
+</VBox>

@@ -1,0 +1,613 @@
+.root {
+  -brand-900: #0b3f91;
+  -brand-800: #114ea9;
+  -brand-700: #1a62ca;
+  -brand-600: #2a76e3;
+  -brand-500: #4a8ff0;
+  -brand-100: #eaf2ff;
+  -brand-050: #f6f9ff;
+  -ink-900: #132743;
+  -ink-700: #39567d;
+  -ink-500: #61799d;
+  -ink-300: #c7d5e8;
+  -ink-200: #dbe6f3;
+  -ink-100: #ebf2fa;
+  -fx-font-family: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "SimSun", "Segoe UI", sans-serif;
+}
+
+.login-root {
+  -fx-background-color:
+      radial-gradient(center 15% 18%, radius 24%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0)),
+      radial-gradient(center 85% 16%, radius 28%, rgba(212, 228, 255, 0.52), rgba(212, 228, 255, 0)),
+      linear-gradient(to bottom right, #f7faff, #eaf2ff 52%, #dbe7fb);
+}
+
+.login-card {
+  -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94));
+  -fx-background-radius: 24;
+  -fx-border-color: rgba(116, 149, 197, 0.32);
+  -fx-border-radius: 24;
+  -fx-effect: dropshadow(gaussian, rgba(11, 63, 145, 0.2), 34, 0.2, 0, 14);
+}
+
+.brand-pane {
+  -fx-pref-width: 410px;
+}
+
+.brand-lockup {
+  -fx-padding: 0 0 4 0;
+}
+
+.brand-title {
+  -fx-font-size: 34px;
+  -fx-font-weight: 700;
+  -fx-text-fill: -brand-900;
+}
+
+.brand-note {
+  -fx-text-fill: rgba(12, 66, 152, 0.78);
+  -fx-font-size: 12px;
+  -fx-font-weight: 700;
+  -fx-letter-spacing: 0.4px;
+}
+
+.brand-subtitle {
+  -fx-font-size: 14px;
+  -fx-text-fill: -brand-700;
+  -fx-background-color: #eef4ff;
+  -fx-padding: 7 13 7 13;
+  -fx-background-radius: 20;
+}
+
+.brand-desc {
+  -fx-text-fill: -ink-500;
+  -fx-font-size: 14px;
+}
+
+.card-sep {
+  -fx-opacity: 0.45;
+}
+
+.form-pane {
+  -fx-pref-width: 390px;
+}
+
+.form-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: 700;
+  -fx-text-fill: -brand-900;
+}
+
+.form-subtitle {
+  -fx-text-fill: -ink-500;
+  -fx-padding: 0 0 8 0;
+}
+
+.field-label {
+  -fx-text-fill: -ink-700;
+  -fx-font-size: 13px;
+  -fx-font-weight: 600;
+}
+
+.login-root .text-field,
+.login-root .password-field {
+  -fx-pref-width: 340px;
+  -fx-background-color: white;
+  -fx-border-color: -ink-300;
+  -fx-border-radius: 11;
+  -fx-background-radius: 11;
+  -fx-padding: 10 12 10 12;
+}
+
+.login-root .text-field:focused,
+.login-root .password-field:focused {
+  -fx-border-color: -brand-600;
+  -fx-effect: dropshadow(gaussian, rgba(42, 118, 227, 0.22), 14, 0.25, 0, 3);
+}
+
+.role-group .radio-button {
+  -fx-padding: 7 10 7 10;
+  -fx-background-radius: 16;
+  -fx-border-radius: 16;
+  -fx-border-color: transparent;
+  -fx-text-fill: -ink-700;
+}
+
+.role-group .radio-button:selected {
+  -fx-background-color: rgba(42, 118, 227, 0.12);
+  -fx-border-color: rgba(42, 118, 227, 0.36);
+  -fx-text-fill: -brand-900;
+}
+
+.primary-btn {
+  -fx-background-color: linear-gradient(to right, #1a62ca, #2a76e3);
+  -fx-text-fill: white;
+  -fx-padding: 11 32 11 32;
+  -fx-background-radius: 12;
+  -fx-font-weight: 700;
+  -fx-effect: dropshadow(gaussian, rgba(26, 98, 202, 0.28), 16, 0.3, 0, 4);
+}
+
+.primary-btn:hover {
+  -fx-background-color: linear-gradient(to right, #1758b7, #226bd5);
+}
+
+.primary-btn:pressed {
+  -fx-background-color: linear-gradient(to right, #114ea9, #1a62ca);
+}
+
+.hint-text {
+  -fx-text-fill: -ink-500;
+  -fx-font-size: 12px;
+}
+
+.hint-accent {
+  -fx-text-fill: -brand-700;
+  -fx-font-size: 12px;
+  -fx-font-weight: 700;
+  -fx-background-color: #eef4ff;
+  -fx-background-radius: 10;
+  -fx-padding: 8 10 8 10;
+}
+
+.main-root {
+  -fx-background-color:
+      radial-gradient(center 90% 10%, radius 48%, rgba(255, 255, 255, 0.56), transparent),
+      linear-gradient(to bottom right, #f7faff, #e9f1ff 58%, #dce8ff);
+}
+
+.main-top {
+  -fx-background-color: rgba(255, 255, 255, 0.88);
+  -fx-background-radius: 0 0 18 18;
+  -fx-border-color: rgba(130, 158, 200, 0.34);
+  -fx-border-width: 0 0 1 0;
+  -fx-effect: dropshadow(gaussian, rgba(20, 46, 89, 0.08), 16, 0.12, 0, 2);
+}
+
+.main-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: 700;
+  -fx-text-fill: -brand-900;
+}
+
+.brand-mark,
+.main-mark {
+  -fx-effect: dropshadow(gaussian, rgba(15, 79, 182, 0.18), 12, 0.2, 0, 3);
+}
+
+.main-brand-lockup {
+  -fx-padding: 2 0 2 0;
+}
+
+.main-tagline {
+  -fx-text-fill: -ink-500;
+  -fx-font-size: 13px;
+}
+
+.main-top .label {
+  -fx-wrap-text: true;
+}
+
+.main-subtitle {
+  -fx-text-fill: -ink-500;
+  -fx-font-size: 14px;
+}
+
+.user-badge {
+  -fx-background-color: rgba(22, 84, 187, 0.12);
+  -fx-border-color: rgba(42, 118, 227, 0.38);
+  -fx-border-radius: 999;
+  -fx-background-radius: 999;
+  -fx-padding: 7 14 7 14;
+  -fx-font-size: 13px;
+  -fx-text-fill: -brand-900;
+  -fx-font-weight: 700;
+}
+
+.header-action-button {
+  -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.96), rgba(240, 246, 255, 0.92));
+  -fx-border-color: rgba(42, 118, 227, 0.34);
+  -fx-border-radius: 12;
+  -fx-background-radius: 12;
+  -fx-padding: 8 16 8 16;
+  -fx-text-fill: -brand-900;
+  -fx-font-weight: 700;
+}
+
+.header-action-button:hover {
+  -fx-background-color: linear-gradient(to bottom, #ffffff, #edf5ff);
+}
+
+.header-action-button:pressed {
+  -fx-background-color: linear-gradient(to bottom, #edf5ff, #deebff);
+}
+
+.main-menu {
+  -fx-pref-width: 212px;
+  -fx-background-color: linear-gradient(to bottom, #1b66dd, #0d49ac 55%, #0a3f98);
+  -fx-background-radius: 0 20 20 0;
+  -fx-border-color: rgba(255, 255, 255, 0.2);
+  -fx-border-width: 0 1 0 0;
+  -fx-effect: dropshadow(gaussian, rgba(13, 44, 96, 0.18), 18, 0.18, 3, 0);
+}
+
+.menu-group-title {
+  -fx-text-fill: rgba(255, 255, 255, 0.85);
+  -fx-font-size: 13px;
+  -fx-font-weight: 700;
+  -fx-padding: 2 8 8 8;
+}
+
+.menu-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-text-fill: rgba(255, 255, 255, 0.94);
+  -fx-font-size: 15px;
+  -fx-font-weight: 600;
+  -fx-padding: 11 14 11 14;
+  -fx-alignment: CENTER_LEFT;
+  -fx-background-radius: 12;
+  -fx-border-radius: 12;
+}
+
+.menu-button:hover {
+  -fx-background-color: rgba(255, 255, 255, 0.22);
+}
+
+.menu-button:pressed {
+  -fx-background-color: rgba(255, 255, 255, 0.3);
+}
+
+.menu-button-active {
+  -fx-background-color: linear-gradient(to right, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.18));
+  -fx-border-color: rgba(255, 255, 255, 0.48);
+  -fx-effect: dropshadow(gaussian, rgba(6, 23, 56, 0.2), 8, 0.2, 0, 2);
+  -fx-text-fill: white;
+}
+
+.menu-button-active:hover {
+  -fx-background-color: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.22));
+}
+
+.main-center {
+  -fx-padding: 22;
+  -fx-background-color: rgba(255, 255, 255, 0.64);
+  -fx-background-insets: 12;
+  -fx-background-radius: 16;
+  -fx-border-color: rgba(130, 158, 200, 0.26);
+  -fx-border-insets: 12;
+  -fx-border-radius: 16;
+}
+
+.main-welcome-card {
+  -fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(245, 250, 255, 0.9));
+  -fx-background-radius: 18;
+  -fx-border-color: rgba(133, 161, 202, 0.3);
+  -fx-border-radius: 18;
+  -fx-padding: 24 30 24 30;
+  -fx-effect: dropshadow(gaussian, rgba(19, 39, 67, 0.1), 14, 0.12, 0, 3);
+}
+
+.panel-root {
+  -fx-background-color: transparent;
+}
+
+.panel-toolbar {
+  -fx-background-color: rgba(255, 255, 255, 0.95);
+  -fx-background-radius: 14;
+  -fx-border-color: rgba(142, 165, 201, 0.3);
+  -fx-border-radius: 14;
+  -fx-effect: dropshadow(gaussian, rgba(19, 39, 67, 0.06), 12, 0.12, 0, 2);
+}
+
+.panel-title {
+  -fx-font-size: 16px;
+  -fx-font-weight: 700;
+  -fx-text-fill: -brand-900;
+}
+
+.panel-root .button {
+  -fx-background-color: linear-gradient(to bottom, #2a76e3, #1c63d0);
+  -fx-text-fill: white;
+  -fx-background-radius: 10;
+  -fx-border-radius: 10;
+  -fx-padding: 7 14 7 14;
+  -fx-font-weight: 600;
+}
+
+.panel-root .toolbar-action-button {
+  -fx-min-width: 72;
+  -fx-pref-height: 34;
+}
+
+.panel-root .button:hover {
+  -fx-background-color: linear-gradient(to bottom, #236bd8, #1659c4);
+}
+
+.panel-root .button:pressed {
+  -fx-background-color: linear-gradient(to bottom, #1758b7, #114ea9);
+}
+
+.panel-root .text-field,
+.panel-root .password-field,
+.panel-root .combo-box,
+.panel-root .date-picker {
+  -fx-background-color: white;
+  -fx-border-color: -ink-300;
+  -fx-border-radius: 9;
+  -fx-background-radius: 9;
+  -fx-padding: 8 10 8 10;
+}
+
+.panel-root .text-field:focused,
+.panel-root .password-field:focused,
+.panel-root .combo-box:focused,
+.panel-root .date-picker:focused {
+  -fx-border-color: -brand-600;
+  -fx-effect: dropshadow(gaussian, rgba(42, 118, 227, 0.18), 10, 0.2, 0, 2);
+}
+
+.panel-root .text-field:disabled,
+.panel-root .combo-box:disabled,
+.panel-root .date-picker:disabled {
+  -fx-background-color: -ink-100;
+  -fx-text-fill: -ink-500;
+  -fx-opacity: 1;
+}
+
+.panel-root .combo-box .list-cell,
+.panel-root .date-picker .text-field {
+  -fx-text-fill: -ink-700;
+  -fx-background-color: transparent;
+}
+
+.panel-root .combo-box .arrow-button,
+.panel-root .date-picker .arrow-button {
+  -fx-background-color: rgba(74, 143, 240, 0.12);
+  -fx-background-radius: 0 8 8 0;
+}
+
+.panel-root .split-pane {
+  -fx-background-color: transparent;
+}
+
+.panel-root .split-pane-divider {
+  -fx-background-color: rgba(130, 158, 200, 0.28);
+}
+
+.panel-root .scroll-pane {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+}
+
+.panel-root .scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+.panel-root .table-view {
+  -fx-background-color: white;
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(142, 165, 201, 0.35);
+  -fx-border-radius: 12;
+  -fx-padding: 4;
+}
+
+.panel-root .table-view .column-header-background {
+  -fx-background-color: linear-gradient(to bottom, #edf4ff, #dceaff);
+  -fx-background-radius: 10 10 0 0;
+}
+
+.panel-root .table-view .column-header,
+.panel-root .table-view .filler {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent transparent rgba(142, 165, 201, 0.26) transparent;
+  -fx-border-width: 0 0 1 0;
+}
+
+.panel-root .table-view .column-header .label {
+  -fx-text-fill: -ink-900;
+  -fx-font-weight: 700;
+  -fx-padding: 8 6 8 6;
+}
+
+.panel-root .table-row-cell {
+  -fx-background-color: white;
+  -fx-table-cell-border-color: rgba(219, 230, 243, 0.7);
+}
+
+.panel-root .table-row-cell:odd {
+  -fx-background-color: #f9fbff;
+}
+
+.panel-root .table-row-cell:selected {
+  -fx-background-color: #dbe9ff;
+}
+
+.panel-root .table-cell {
+  -fx-text-fill: -ink-700;
+  -fx-font-size: 13px;
+}
+
+.panel-root .tab-pane {
+  -fx-background-color: transparent;
+}
+
+.panel-root .tab-pane .tab-header-area {
+  -fx-padding: 0 0 10 0;
+}
+
+.panel-root .tab-pane .tab-header-area .tab-header-background {
+  -fx-background-color: transparent;
+}
+
+.panel-root .tab-pane .tab-header-area .headers-region .tab {
+  -fx-background-color: #edf4ff;
+  -fx-background-radius: 10;
+  -fx-padding: 6 14 6 14;
+}
+
+.panel-root .tab-pane .tab-header-area .headers-region .tab .tab-label {
+  -fx-text-fill: -ink-700;
+  -fx-font-weight: 600;
+}
+
+.panel-root .tab-pane .tab-header-area .headers-region .tab:selected {
+  -fx-background-color: linear-gradient(to bottom, #2a76e3, #1c63d0);
+}
+
+.panel-root .tab-pane .tab-header-area .headers-region .tab:selected .tab-label {
+  -fx-text-fill: white;
+}
+
+.panel-root .tab-pane .tab-content-area {
+  -fx-background-color: rgba(255, 255, 255, 0.78);
+  -fx-background-radius: 14;
+  -fx-border-color: rgba(142, 165, 201, 0.3);
+  -fx-border-radius: 14;
+  -fx-padding: 8;
+}
+
+.panel-root .tab-pane .tab-content-area > .vbox {
+  -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(248, 252, 255, 0.88));
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(154, 176, 210, 0.26);
+  -fx-border-radius: 12;
+  -fx-padding: 10;
+}
+
+.panel-root .grid-pane {
+  -fx-background-color: rgba(255, 255, 255, 0.85);
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(146, 170, 206, 0.28);
+  -fx-border-radius: 12;
+  -fx-padding: 12;
+}
+
+.panel-root .grid-pane > .label {
+  -fx-text-fill: -ink-700;
+  -fx-font-size: 13px;
+  -fx-font-weight: 600;
+  -fx-min-width: 74;
+  -fx-pref-width: 74;
+}
+
+.learning-helper-text {
+  -fx-text-fill: -ink-500;
+  -fx-font-size: 12px;
+}
+
+.learning-student-name {
+  -fx-text-fill: -brand-900;
+  -fx-font-size: 22px;
+  -fx-font-weight: 700;
+}
+
+.learning-badge {
+  -fx-background-color: rgba(22, 84, 187, 0.12);
+  -fx-border-color: rgba(42, 118, 227, 0.32);
+  -fx-border-radius: 999;
+  -fx-background-radius: 999;
+  -fx-padding: 6 12 6 12;
+  -fx-text-fill: -brand-900;
+  -fx-font-weight: 700;
+}
+
+.panel-root .learning-info-grid {
+  -fx-background-color: rgba(238, 245, 255, 0.72);
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(137, 165, 206, 0.28);
+  -fx-border-radius: 12;
+  -fx-padding: 14;
+}
+
+.panel-root .learning-metric-card {
+  -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(247, 251, 255, 0.9));
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(142, 165, 201, 0.28);
+  -fx-border-radius: 12;
+  -fx-padding: 10 12 10 12;
+}
+
+.stat-dashboard {
+  -fx-padding: 0;
+}
+
+.panel-root .stat-scroll,
+.panel-root .stat-scroll > .viewport {
+  -fx-background-color: transparent;
+  -fx-background-insets: 0;
+}
+
+.stat-card {
+  -fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0.96), rgba(246, 251, 255, 0.9));
+  -fx-background-radius: 14;
+  -fx-border-color: rgba(142, 165, 201, 0.32);
+  -fx-border-radius: 14;
+  -fx-padding: 12;
+  -fx-effect: dropshadow(gaussian, rgba(19, 39, 67, 0.08), 12, 0.12, 0, 2);
+}
+
+.panel-root .stat-grid {
+  -fx-background-color: rgba(238, 245, 255, 0.72);
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(137, 165, 206, 0.3);
+  -fx-border-radius: 12;
+  -fx-padding: 12;
+}
+
+.metric-label {
+  -fx-text-fill: -ink-500;
+  -fx-font-size: 13px;
+  -fx-font-weight: 600;
+}
+
+.metric-value {
+  -fx-text-fill: -brand-800;
+  -fx-font-size: 18px;
+  -fx-font-weight: 700;
+}
+
+.stat-summary {
+  -fx-text-fill: -ink-700;
+  -fx-font-size: 13px;
+  -fx-line-spacing: 2px;
+}
+
+.panel-root .chart {
+  -fx-background-color: rgba(255, 255, 255, 0.9);
+  -fx-background-radius: 12;
+  -fx-border-color: rgba(146, 170, 206, 0.26);
+  -fx-border-radius: 12;
+  -fx-padding: 10;
+}
+
+.panel-root .chart-plot-background {
+  -fx-background-color: linear-gradient(to bottom, #f9fbff, #f3f8ff);
+  -fx-background-insets: 0;
+  -fx-background-radius: 10;
+}
+
+.panel-root .axis {
+  -fx-tick-label-fill: -ink-700;
+}
+
+.panel-root .axis-label {
+  -fx-text-fill: -ink-500;
+  -fx-font-weight: 600;
+}
+
+.panel-root .default-color0.chart-bar {
+  -fx-bar-fill: #2a76e3;
+}
+
+.panel-root .default-color0.chart-series-line {
+  -fx-stroke: #1a62ca;
+  -fx-stroke-width: 2px;
+}
+
+.panel-root .default-color0.chart-line-symbol {
+  -fx-background-color: #1a62ca, white;
+  -fx-background-insets: 0, 2;
+  -fx-background-radius: 6px;
+  -fx-padding: 5px;
+}

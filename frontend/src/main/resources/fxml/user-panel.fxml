@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentms.ui.controller.UserPanelController"
+      spacing="16" styleClass="panel-root">
+  <children>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel-toolbar">
+      <padding>
+        <Insets top="14" right="16" bottom="14" left="16" />
+      </padding>
+      <children>
+        <Label text="账户管理" styleClass="panel-title" />
+        <TextField fx:id="keywordField" promptText="按账号/姓名/电话搜索" HBox.hgrow="ALWAYS" />
+        <ComboBox fx:id="roleFilterBox" prefWidth="150.0" />
+        <Button text="查询" onAction="#handleSearch" styleClass="toolbar-action-button" />
+        <Button text="重置" onAction="#handleResetFilter" styleClass="toolbar-action-button" />
+        <Button text="新增" onAction="#handleNew" styleClass="toolbar-action-button" />
+        <Button text="保存" onAction="#handleSave" styleClass="toolbar-action-button" />
+        <Button fx:id="deleteButton" text="删除" onAction="#handleDelete" styleClass="toolbar-action-button" />
+      </children>
+    </HBox>
+
+    <SplitPane dividerPositions="0.54">
+      <items>
+        <TableView fx:id="userTable">
+          <columns>
+            <TableColumn fx:id="accountColumn" text="账号" prefWidth="130.0" />
+            <TableColumn fx:id="nameColumn" text="姓名" prefWidth="100.0" />
+            <TableColumn fx:id="roleColumn" text="角色" prefWidth="90.0" />
+            <TableColumn fx:id="statusColumn" text="状态" prefWidth="90.0" />
+            <TableColumn fx:id="phoneColumn" text="电话" prefWidth="120.0" />
+            <TableColumn fx:id="fineColumn" text="欠费" prefWidth="90.0" />
+          </columns>
+        </TableView>
+
+        <VBox spacing="12">
+          <children>
+            <GridPane hgap="10" vgap="10">
+              <children>
+                <Label text="账号" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="accountField" promptText="如 staff01 / reader01" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="姓名" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <TextField fx:id="nameField" promptText="请输入姓名" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                <Label text="密码" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <TextField fx:id="passwordField" promptText="新增默认 123456，可留空" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <Label text="角色" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <ComboBox fx:id="roleBox" prefWidth="160.0" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+                <Label text="状态" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <ComboBox fx:id="statusBox" prefWidth="160.0" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Label text="部门" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                <TextField fx:id="departmentField" promptText="图书馆/信息学院等" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+                <Label text="电话" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <TextField fx:id="phoneField" promptText="请输入联系电话" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                <Label text="邮箱" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                <TextField fx:id="emailField" promptText="请输入邮箱" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+              </children>
+            </GridPane>
+
+            <VBox fx:id="readerSection" spacing="10">
+              <children>
+                <Label text="读者扩展信息" styleClass="panel-title" />
+                <GridPane hgap="10" vgap="10">
+                  <children>
+                    <Label text="读者证号" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                    <TextField fx:id="readerNoField" promptText="如 R00001" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                    <Label text="借阅上限" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                    <TextField fx:id="maxBorrowCountField" promptText="默认 8" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                    <Label text="证件状态" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                    <ComboBox fx:id="cardStatusBox" prefWidth="160.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                    <Label text="年级/班级" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                    <TextField fx:id="gradeField" promptText="如 2023级软件工程" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+                  </children>
+                </GridPane>
+                <TextArea fx:id="noteArea" prefRowCount="3" promptText="读者备注信息" />
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                  <children>
+                    <Label text="当前在借：" />
+                    <Label fx:id="currentBorrowLabel" text="0" styleClass="learning-badge" />
+                    <Label text="欠费余额：" />
+                    <Label fx:id="fineBalanceLabel" text="0" styleClass="learning-badge" />
+                    <TextField fx:id="payAmountField" promptText="输入缴费金额" prefWidth="140.0" />
+                    <Button fx:id="payFineButton" text="罚金结算" onAction="#handlePayFine" />
+                  </children>
+                </HBox>
+              </children>
+              <VBox.margin>
+                <Insets top="6" />
+              </VBox.margin>
+            </VBox>
+          </children>
+          <padding>
+            <Insets top="2" right="6" bottom="2" left="6" />
+          </padding>
+          <VBox.vgrow>
+            <Priority fx:constant="ALWAYS" />
+          </VBox.vgrow>
+        </VBox>
+      </items>
+    </SplitPane>
+  </children>
+</VBox>

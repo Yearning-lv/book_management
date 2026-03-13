@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studentms.ui.controller.BookPanelController"
+      spacing="16" styleClass="panel-root">
+  <children>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel-toolbar">
+      <padding>
+        <Insets top="14" right="16" bottom="14" left="16" />
+      </padding>
+      <children>
+        <Label text="图书目录" styleClass="panel-title" />
+        <TextField fx:id="keywordField" promptText="按 ISBN / 书名 / 作者搜索" HBox.hgrow="ALWAYS" />
+        <ComboBox fx:id="categoryFilterBox" prefWidth="160.0" />
+        <ComboBox fx:id="shelfStatusFilterBox" prefWidth="130.0" />
+        <Button text="查询" onAction="#handleSearch" styleClass="toolbar-action-button" />
+        <Button text="重置" onAction="#handleResetFilter" styleClass="toolbar-action-button" />
+        <Button text="新增" onAction="#handleNew" styleClass="toolbar-action-button" />
+        <Button fx:id="saveButton" text="保存" onAction="#handleSave" styleClass="toolbar-action-button" />
+        <Button fx:id="deleteButton" text="删除" onAction="#handleDelete" styleClass="toolbar-action-button" />
+        <Button fx:id="reserveButton" text="预约该书" onAction="#handleReserve" styleClass="toolbar-action-button" />
+      </children>
+    </HBox>
+
+    <SplitPane dividerPositions="0.54">
+      <items>
+        <TableView fx:id="bookTable">
+          <columns>
+            <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="110.0" />
+            <TableColumn fx:id="titleColumn" text="书名" prefWidth="170.0" />
+            <TableColumn fx:id="authorColumn" text="作者" prefWidth="110.0" />
+            <TableColumn fx:id="categoryColumn" text="分类" prefWidth="95.0" />
+            <TableColumn fx:id="availableColumn" text="可借" prefWidth="70.0" />
+            <TableColumn fx:id="totalColumn" text="总藏" prefWidth="70.0" />
+            <TableColumn fx:id="statusColumn" text="状态" prefWidth="90.0" />
+          </columns>
+        </TableView>
+
+        <VBox spacing="12">
+          <children>
+            <GridPane hgap="10" vgap="10">
+              <children>
+                <Label text="ISBN" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="isbnField" promptText="如 9787301234567" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="书名" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <TextField fx:id="titleField" promptText="请输入书名" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+                <Label text="作者" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <TextField fx:id="authorField" promptText="请输入作者" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <Label text="分类" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <ComboBox fx:id="categoryBox" prefWidth="180.0" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+                <Label text="出版社" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <ComboBox fx:id="publisherBox" prefWidth="180.0" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Label text="出版日期" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                <DatePicker fx:id="publishDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+                <Label text="单价" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <TextField fx:id="priceField" promptText="如 69.00" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                <Label text="上架状态" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                <ComboBox fx:id="shelfStatusBox" prefWidth="180.0" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+
+                <Label text="关键词" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                <TextField fx:id="keywordsField" promptText="算法, Java, 设计模式" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+              </children>
+            </GridPane>
+            <TextArea fx:id="summaryArea" prefRowCount="8" promptText="图书简介 / 内容摘要" />
+          </children>
+          <padding>
+            <Insets top="2" right="6" bottom="2" left="6" />
+          </padding>
+        </VBox>
+      </items>
+    </SplitPane>
+  </children>
+</VBox>
