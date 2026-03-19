@@ -5,7 +5,6 @@
 ## 目录结构
 
 ```text
-作业（2）/
   backend/   Spring Boot 3 后端
   frontend/  JavaFX 客户端
   sql/       建表脚本与演示数据
